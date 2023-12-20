@@ -1,0 +1,13 @@
+@startuml
+
+participant user: пользователь
+participant application: преложение
+participant carts: внешний источник информации
+user -> application: запускает приложение
+application --> user: запускается и выводит интерфейс
+user -> application: делает запрос
+application -> carts: запрос к внешнему источнику
+carts --> application: ответ от внешнего источника
+application --> user: ответ пользователю
+
+@enduml

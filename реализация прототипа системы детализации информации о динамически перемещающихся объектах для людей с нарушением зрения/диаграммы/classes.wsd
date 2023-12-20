@@ -1,0 +1,42 @@
+@startuml
+
+class transport
+{
+  {field} name_class
+{method} + coordinates(): местоположение транспорта
+{method} + time_request(): время, прошедшее с последнего запроса о координатах
+{method} + speed(): скорость транспорта
+{method} + Arrival_time(): ожидаемое время прибытия транспорта
+}
+transport <|. interface
+transport <|. api
+
+class interface
+{
+  {field} name_class
+{method} + notifications(): принимает и выводит push уведомления
+{method} + editor(): принимает и отправляет информацию пользователя.
+{method} + window(): распологает информацию при открытии преложения на экране.
+}
+transport .|> interface
+user .|> interface
+
+class user
+{
+  {field}name_class 
+  {field} user_name: имя пользователя
+  {field} gmail_or_fon: электронная почта или телефон пользователя.
+{method} + coordinates(): местоположение пользователя.
+}
+user <|. interface
+user <|. api
+
+class api
+{
+  {field} name_class
+{method} + request(): отправляет запросы к внешнему источнику и принимает информацию из этого источника
+}
+transport .|> api
+user .|> api
+
+@enduml

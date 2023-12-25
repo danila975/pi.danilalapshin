@@ -1,13 +1,15 @@
 @startuml
 
-participant user: пользователь
-participant application: преложение
-participant carts: внешний источник информации
+participant пользователь as user
+participant преложение as application
+participant карты as carts
 user -> application: запускает приложение
+application --> user: запрашивает местоположение пользователя
 application --> user: запускается и выводит интерфейс
-user -> application: делает запрос
-application -> carts: запрос к внешнему источнику
-carts --> application: ответ от внешнего источника
-application --> user: ответ пользователю
+user -> application: делает запрос в виде номера маршрута транспорта
+application -> carts: запрос к яндекс картам
+carts --> application: ответ от яндекс карт
+application --> user: выводит информацию и варианты взаимодействия пользователю
+user -> application: выбирает один из них
 
 @enduml

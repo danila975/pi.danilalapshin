@@ -3,16 +3,19 @@
 class transport
 {
   {field} time_request: время, прошедшее с последнего запроса о координатах
-{method} + coordinates(): местоположение транспорта
-{method} + speed(): скорость транспорта
-{method} + Arrival_time(): ожидаемое время прибытия транспорта
+  {field} coordinates: хранит координаты транспорта
+  {field} speed: хранит скорость транспорта
+  {field} Arrival_time: хранит ожидаемое время прибытия транспорта
+{method} + get_coordinates(): получает координаты транспорта из карт и кладёт их в поле coordinates через определённый промежуток времени
+{method} + get_speed(): получает скорость транспорта из карт и кладёт в поле speed через определённый промежуток времени
+{method} + get_Arrival_time(): получает ожидаемое время прибытия транспорта с карт и кладёт в поле  через определённый промежуток времени.
 }
 transport .> api
 
 class interface
 {
-{method} + notifications(): принимает и выводит push уведомления
-{method} + editor(): принимает и отправляет информацию пользователя.
+{method} + work_notifications(): принимает и выводит push уведомления
+{method} + work_user_input(): принимает и отправляет информацию пользователя.
 {method} + window(): распологает информацию при открытии преложения на экране.
 }
 transport <. interface
@@ -21,14 +24,15 @@ class user
 {
   {field} user_name: имя пользователя
   {field} gmail_or_fon: электронная почта или телефон пользователя.
-{method} + coordinates(): местоположение пользователя.
+  {field} user_coordinates: хранит координаты пользователя
+{method} + get_coordinates(): местоположение пользователя.
 }
 user <. interface
 user <. api
 
 class api
 {
-{method} + request(): отправляет запросы к внешнему источнику и принимает информацию из этого источника
+{method} + work_requests(): отправляет запросы к яндекс картам и принимает информацию от них
 }
 
 @enduml

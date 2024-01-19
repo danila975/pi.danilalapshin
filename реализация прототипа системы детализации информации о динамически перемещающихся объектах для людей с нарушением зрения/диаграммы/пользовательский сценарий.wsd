@@ -6,8 +6,8 @@ actor user
 (говорит преслать уведомление когда он подойдёт) as (ac3)
 (смотрит ожидаемое время прибытия) as (ac4)
 user -> ac1
-user -> ac2
-user -> ac3
-user -> ac4
+ac1 -> ac2
+ac2 -> ac3
+ac3 -> ac4
 
 @enduml
